@@ -208,6 +208,7 @@ class ItemRenderer extends AbstractRenderer
     public function renderListItem(Item\List\ListItem $item)
     {
         $bounds = $item->getBounds();
+        $row_height = 
 
         //改ページの処理もどこかでやらねばならぬ
         //はみだしてしまうときとかの処理も
@@ -218,7 +219,6 @@ class ItemRenderer extends AbstractRenderer
           }
           //描画において行を増やす処理を行う(最後以外)
         }
-
     }
 
     /**

@@ -277,7 +277,7 @@ class Layout
                 return new Item\PageNumberItem($owner, $item_format);
                 break;
             case 's-list':
-                return new Item\List\ListItem($owner, $item_format, $item_format['page-break']);
+                return new Item\List\ListItem($owner, $item_format);
                 break;
             default:
                 return new Item\BasicItem($owner, $item_format);
