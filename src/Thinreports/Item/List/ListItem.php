@@ -1,8 +1,9 @@
 <?php
 
-namespace Thinreports\Item;
+namespace Thinreports\Item\List;
 
 use Thinreports\Page\Page;
+use Thinreports\Item\AbstractItem;
 
 class ListItem  extends AbstractItem
 {
