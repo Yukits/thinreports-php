@@ -35,6 +35,9 @@ class ItemRenderer extends AbstractRenderer
             case $item instanceof Item\PageNumberItem:
                 $this->renderPageNumberItem($item);
                 break;
+            case $item instanceof Item\List\ListItem:
+                $this->renderListItem($item);
+                break;
             default:
                 $this->renderBasicItem($item);
                 break;
@@ -200,6 +203,22 @@ class ItemRenderer extends AbstractRenderer
             $bounds['height'],
             $this->buildTextStyles($item->exportStyles())
         );
+    }
+
+    public function renderListItem(Item\List\ListItem $item)
+    {
+        $bounds = $item->getBounds();
+
+        //改ページの処理もどこかでやらねばならぬ
+        //はみだしてしまうときとかの処理も
+
+        foreach ($item->getRows() as $row) {
+          foreach ($row->getItems() as $ls_item) {
+            render($ls_item); //これでうまくいくのか？リスト用の処理はいらないか？
+          }
+          //描画において行を増やす処理を行う(最後以外)
+        }
+
     }
 
     /**

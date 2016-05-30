@@ -90,7 +90,7 @@ class Layout
                  $ls_item_format_json = $matched_ls_item[1];
                  $ls_item_format = json_decode($ls_item_format_json, true);
 
-                 $item_formats[$ls_item_format['id']] = $ls_item_format;
+                 //$item_formats[$ls_item_format['id']] = $ls_item_format;
                }
             }
             if ($item_format['type'] === Item\PageNumberItem::TYPE_NAME) {
@@ -286,6 +286,7 @@ class Layout
     }
 
     //TODO: page break用の関数実装予定
+    //上記のcreateItemはリストの中のやつには使えないのでは？
 
     /**
      * @access private

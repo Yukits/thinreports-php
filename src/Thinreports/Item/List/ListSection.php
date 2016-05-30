@@ -22,6 +22,9 @@ class ListSection
 
     //このidによってcreateItemできるが、どのrowに何をいれるのかをidで行うためには、
     //idはrowごとに一意的になるように変更しなければならない。
+    //この仕組自体を変えないと。。。描画に支障がでるかもしれない
+    //同じidを用いて、同ページ扱いで作成は可能か？idはインスタンスが違うのでokだが。。
+    //描画の仕様がどうなっているのか不明
     $item = $this->layout->createItem($parent->parent, $id);
     $this->items[$id] = $item;
 
@@ -51,6 +54,11 @@ class ListSection
       foreach ($values as $id => $value) {
           $this->setItemValue($id, $value);
       }
+  }
+
+  public function getItems()
+  {
+    return $this->items;
   }
 
 }

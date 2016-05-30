@@ -44,4 +44,9 @@ class ListItem  extends AbstractItem
   {
     return $this->auto_page_break;
   }
+
+  public function getRows()
+  {
+    return $this->rows;
+  }
 }
