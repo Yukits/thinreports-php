@@ -25,14 +25,19 @@ class ListItem  extends AbstractItem
     $this->auto_page_break = $auto_page_break;
   }
 
-  public function addRow(ListSection $new_row)
+  public function addRow()
   {
-    $this->rows += $new_row;
+      $new_row = new ListSection($this);
+      $this->rows[] = $new_row;
+
+      return $new_row;
   }
 
-  public function setHeader(ListSection $header)
+  public function addHeader()
   {
-    $this->header = $header;
+    $this->header = new ListSection($this);
+
+    return $this->header;
   }
 
   public function isAutoPageBreak()

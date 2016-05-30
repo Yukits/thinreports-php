@@ -27,4 +27,30 @@ class ListSection
 
     return $item;
   }
+
+  /**
+   * @param string $id
+   * @param mixed $value
+   * @throws Exception\StandardException
+   */
+  public function setItemValue($id, $value)
+  {
+    $item = $this->item($id);
+
+    if (!$item->isTypeOf('block')) {
+        throw new Exception\StandardException('Unedtiable Item', $id);
+    }
+    $item->setValue($value);
+  }
+
+  /**
+   * @param array $values
+   */
+  public function setItemValues(array $values)
+  {
+      foreach ($values as $id => $value) {
+          $this->setItemValue($id, $value);
+      }
+  }
+
 }

@@ -273,14 +273,19 @@ class Layout
             case 's-iblock':
                 return new Item\ImageBlockItem($owner, $item_format);
                 break;
-            case 's-pageno';
+            case 's-pageno':
                 return new Item\PageNumberItem($owner, $item_format);
+                break;
+            case 's-list':
+                return new Item\List\ListItem($owner, $item_format, $item_format['page-break']);
                 break;
             default:
                 return new Item\BasicItem($owner, $item_format);
                 break;
         }
     }
+
+    //TODO: page break用の関数実装予定
 
     /**
      * @access private
