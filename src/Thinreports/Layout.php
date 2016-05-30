@@ -83,12 +83,21 @@ class Layout
             $item_format = json_decode($item_format_json, true);
 
             if ($item_format['type'] === 's-list') {
-                continue;
+              preg_match_all('/<!---SHAPE(.*?)SHAPE--->/',
+               $item_format['content'], $matched_ls_items, PREG_SET_ORDER);
+
+               foreach ($matched_ls_items as $matched_ls_item) {
+                 $ls_item_format_json = $matched_ls_item[1];
+                 $ls_item_format = json_decode($ls_item_format_json, true);
+
+                 $item_formats[$ls_item_format['id']] = $ls_item_format;
+               }
             }
             if ($item_format['type'] === Item\PageNumberItem::TYPE_NAME) {
                 self::setPageNumberUniqueId($item_format);
             }
 
+            //果たして、リストのidを登録する必要はあるのだろうか
             $item_formats[$item_format['id']] = $item_format;
         }
 
