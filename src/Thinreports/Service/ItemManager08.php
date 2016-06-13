@@ -2,7 +2,7 @@
 
 class ItemManager08 extends AItemManager
 {
-  private $ls_item_formats;
+  // private $ls_item_formats;
 
   public __construct($format)
   {
@@ -14,7 +14,7 @@ class ItemManager08 extends AItemManager
   {
     $item_formats_array = extractItemFormats($this->format['svg']);
     $this->item_formats = $item_formats_array['layout'];
-    $this->ls_item_formats = $item_formats_array['list'];
+    // $this->ls_item_formats = $item_formats_array['list'];
     cleanFormat($this->format);
   }
 
@@ -44,7 +44,7 @@ class ItemManager08 extends AItemManager
                $ls_item_format_json = $matched_ls_item[1];
                $ls_item_format = json_decode($ls_item_format_json, true);
 
-               $ls_item_formats[$item_format['id']][$ls_item_format['id']] = $ls_item_format;
+              //  $ls_item_formats[$item_format['id']][$ls_item_format['id']] = $ls_item_format;
              }
           }
           if ($item_format['type'] === Item\PageNumberItem::TYPE_NAME) {
@@ -56,7 +56,7 @@ class ItemManager08 extends AItemManager
 
       return array(
                 'layout' => $item_formats,
-                'list' => $ls_item_formats
+                // 'list' => $ls_item_formats
               );
   }
 
@@ -99,11 +99,12 @@ class ItemManager08 extends AItemManager
       throw new Exception\StandardException('Item Not Found', $id);
     }
 
-    if(!$owner->isPage())//list
+    if(!$owner->isPage())//list section
     {
-      
+      $item_format = $owner->getItemFormats()[$id];
+    }else{
+      $item_format = $this->item_formats[$id];
     }
-    $item_format = $this->item_formats[$id];
 
     switch ($item_format['type']) {
       case 's-tblock':

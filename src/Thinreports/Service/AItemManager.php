@@ -19,9 +19,7 @@ abstract class AItemManager
   {
       return array_key_exists($id, $this->item_formats);
   }
-
-
-
+  
   public function getFormat()
   {
     return $this->format;
@@ -32,6 +30,7 @@ abstract class AItemManager
       return $this->item_formats;
   }
 
+  abstract public function createItem(iParent $owner, $id);
   abstract public function getTLFVersion();
   abstract public function getPaperType();
   abstract public function getOrientation();
