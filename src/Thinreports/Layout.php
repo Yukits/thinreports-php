@@ -86,7 +86,7 @@ class Layout
 
             if ($item_format['type'] === 's-list') {
               preg_match_all('/<!---SHAPE(.*?)SHAPE--->/',
-               $item_format['content'], $matched_ls_items, PREG_SET_ORDER);
+               $item_format['detail']['svg']['content'], $matched_ls_items, PREG_SET_ORDER);
 
                foreach ($matched_ls_items as $matched_ls_item) {
                  $ls_item_format_json = $matched_ls_item[1];
