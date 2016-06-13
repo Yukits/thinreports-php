@@ -2,12 +2,19 @@
 
 class ItemManager08 extends AItemManager
 {
+  private $ls_item_formats;
 
-  private $item_formats;
+  public __construct($format)
+  {
+    parent::__construct($format);
+    initialize();
+  }
 
   public fucntion initialize()
   {
     $item_formats_array = extractItemFormats($this->format['svg']);
+    $this->item_formats = $item_formats_array['layout'];
+    $this->ls_item_formats = $item_formats_array['list'];
     cleanFormat($this->format);
   }
 
@@ -76,5 +83,9 @@ class ItemManager08 extends AItemManager
       if (empty($item_format['id'])) {
           $item_format['id'] = Item\PageNumberItem::generateUniqueId();
       }
+  }
+
+  public fuction getListItemFormats(){
+    return $this->ls_item_formats;
   }
 }

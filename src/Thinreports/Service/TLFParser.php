@@ -46,31 +46,4 @@ class TLFParser
       }
       return true;
   }
-
-  // /**
-  //  * @access private
-  //  *
-  //  * @param string $file_content
-  //  * @return array
-  //  * @throws Exception\IncompatibleLayout
-  //  */
-  // static public function parse($file_content)
-  // {
-  //
-  //
-  //     // $format = json_decode($file_content, true);
-  //     //
-  //
-  //     //
-  //     // $item_formats_array = self::extractItemFormats($format['svg']);
-  //     // self::cleanFormat($format);
-  //     //
-  //     // return array(
-  //     //     'format' => $format,
-  //     //     'item_formats' => $item_formats_array['layout']
-  //     //     'ls_item_formats' => $tem_formats_array['list']
-  //     // );
-  // }
-
-
 }

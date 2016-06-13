@@ -13,6 +13,7 @@ use Thinreports\Exception;
 use Thinreports\Item;
 use Thinreports\Page\Page;
 use Thinreports\Service\AItemManager;
+use Thinreports\Service\TLFParser;
 
 class Layout
 {
@@ -189,7 +190,9 @@ class Layout
      */
     public function getReportTitle()
     {
-        return $this->format['config']['title'];
+        // return $this->format['config']['title'];
+        return $this->item_manager->getTitle();
+
     }
 
     /**
@@ -197,7 +200,8 @@ class Layout
      */
     public function getPagePaperType()
     {
-        return $this->format['config']['page']['paper-type'];
+        // return $this->format['config']['page']['paper-type'];
+        return $this->item_manager->getPaperType();
     }
 
     /**
@@ -205,12 +209,13 @@ class Layout
      */
     public function getPageSize()
     {
-        if ($this->isUserPaperType()) {
-            $page = $this->format['config']['page'];
-            return array($page['width'], $page['height']);
-        } else {
-            return null;
-        }
+        // if ($this->isUserPaperType()) {
+        //     $page = $this->format['config']['page'];
+        //     return array($page['width'], $page['height']);
+        // } else {
+        //     return null;
+        // }
+        return $this->item_manager->getPageSize();
     }
 
     /**
@@ -218,7 +223,8 @@ class Layout
      */
     public function isPortraitPage()
     {
-        return $this->format['config']['page']['orientation'] === 'portrait';
+        // return $this->format['config']['page']['orientation'] === 'portrait';
+        return $this->item_manager->getOrientation() === 'portrait';
     }
 
     /**
@@ -226,7 +232,8 @@ class Layout
      */
     public function isUserPaperType()
     {
-        return $this->format['config']['page']['paper-type'] === 'user';
+        // return $this->format['config']['page']['paper-type'] === 'user';
+        return $this->item_manager->getPaperType === 'user';
     }
 
     /**
@@ -236,68 +243,66 @@ class Layout
      */
     public function getLastVersion()
     {
-        return $this->format['version'];
+        return $this->item_manager->getTLFVersion();
     }
 
-    /**
-     * @access private
-     *
-     * @return string
-     */
-    public function getSVG()
-    {
-        return $this->format['svg'];
-    }
+    // /**
+    //  * @access private
+    //  *
+    //  * @return string
+    //  */
+    // public function getSVG()
+    // {
+    //     return $this->format['svg'];
+    // }
 
-    /**
-     * @access private
-     *
-     * @param string $id
-     * @return boolean
-     */
-    public function hasItem($id)
-    {
-        return array_key_exists($id, $this->item_formats);
-    }
-
-    /**
-     * @access private
-     *
-     * @param Page $owner
-     * @param string $id
-     * @return Item\AbstractItem
-     * @throws Exception\StandardException
-     */
-    public function createItem(Page $owner, $id)
-    {
-        if (!$this->hasItem($id)) {
-            throw new Exception\StandardException('Item Not Found', $id);
-        }
-
-        $item_format = $this->item_formats[$id];
-
-        switch ($item_format['type']) {
-            case 's-tblock':
-                return new Item\TextBlockItem($owner, $item_format);
-                break;
-            case 's-iblock':
-                return new Item\ImageBlockItem($owner, $item_format);
-                break;
-            case 's-pageno':
-                return new Item\PageNumberItem($owner, $item_format);
-                break;
-            case 's-list':
-                if($owner->isPage()){
-                  return new Item\List\ListItem($owner, $item_format, $this->ls_item_formats[$id]);
-                }
-                break;
-            default:
-                return new Item\BasicItem($owner, $item_format);
-                break;
-        }
-    }
-
-    //TODO: page break用の関数実装予定
+    // /**
+    //  * @access private
+    //  *
+    //  * @param string $id
+    //  * @return boolean
+    //  */
+    // public function hasItem($id)
+    // {
+    //     return array_key_exists($id, $this->item_formats);
+    // }
+    //
+    // /**
+    //  * @access private
+    //  *
+    //  * @param Page $owner
+    //  * @param string $id
+    //  * @return Item\AbstractItem
+    //  * @throws Exception\StandardException
+    //  */
+    // public function createItem(Page $owner, $id)
+    // {
+    //     if (!$this->hasItem($id)) {
+    //         throw new Exception\StandardException('Item Not Found', $id);
+    //     }
+    //
+    //     $item_format = $this->item_formats[$id];
+    //
+    //     switch ($item_format['type']) {
+    //         case 's-tblock':
+    //             return new Item\TextBlockItem($owner, $item_format);
+    //             break;
+    //         case 's-iblock':
+    //             return new Item\ImageBlockItem($owner, $item_format);
+    //             break;
+    //         case 's-pageno':
+    //             return new Item\PageNumberItem($owner, $item_format);
+    //             break;
+    //         case 's-list':
+    //             if($owner->isPage()){
+    //               return new Item\List\ListItem($owner, $item_format, $this->ls_item_formats[$id]);
+    //             }
+    //             break;
+    //         default:
+    //             return new Item\BasicItem($owner, $item_format);
+    //             break;
+    //     }
+    // }
 
     /**
      * @access private
@@ -316,7 +321,7 @@ class Layout
      */
     public function getFormat()
     {
-        return $this->format;
+        return $this->item_manager->getFormat();
     }
 
     /**
@@ -326,6 +331,6 @@ class Layout
      */
     public function getItemFormats()
     {
-        return $this->item_formats;
+        return $this->item_manager->getItemFormats();
     }
 }
