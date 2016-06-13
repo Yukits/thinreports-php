@@ -6,9 +6,11 @@ use Thinreports\Page\Page;
 use Thinreports\Item\AbstractItem;
 use Thinreports\Interface\iParent;
 
-class ListItem  extends AbstractItem implements iParent
+class ListItem  extends AbstractItem
 {
   const TYPE_NAME = 's-list';
+
+  private $item_formats = array();
 
   private $auto_page_break;
 
@@ -70,13 +72,36 @@ class ListItem  extends AbstractItem implements iParent
     return
   }
 
-  public function isCountable()
-  {
-    return false;
-  }
 
-  public function isPage()
+  /**
+   * @access private
+   *
+   * @param ListSection $owner
+   * @param string $id
+   * @return Item\AbstractItem
+   * @throws Exception\StandardException
+   */
+  public function createItem(ListSection $owner, $id)
   {
-    return false;
+      if (!$this->hasItem($id)) {
+          throw new Exception\StandardException('Item Not Found', $id);
+      }
+
+      $item_format = $this->item_formats[$id];
+
+      switch ($item_format['type']) {
+          case 's-tblock':
+              return new Item\TextBlockItem($owner, $item_format);
+              break;
+          case 's-iblock':
+              return new Item\ImageBlockItem($owner, $item_format);
+              break;
+          case 's-pageno':
+              return new Item\PageNumberItem($owner, $item_format);
+              break;
+          default:
+              return new Item\BasicItem($owner, $item_format);
+              break;
+      }
   }
 }

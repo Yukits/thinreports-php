@@ -253,12 +253,12 @@ class Layout
     /**
      * @access private
      *
-     * @param iParent $owner
+     * @param Page $owner
      * @param string $id
      * @return Item\AbstractItem
      * @throws Exception\StandardException
      */
-    public function createItem(iParent $owner, $id)
+    public function createItem(Page $owner, $id)
     {
         if (!$this->hasItem($id)) {
             throw new Exception\StandardException('Item Not Found', $id);
@@ -288,7 +288,6 @@ class Layout
     }
 
     //TODO: page break用の関数実装予定
-    //上記のcreateItemはリストの中のやつには使えないのでは？
 
     /**
      * @access private

@@ -4,7 +4,7 @@ namespace Thinreports\Item\List;
 
 use Thinreports\Item;
 
-class ListSection
+class ListSection implements iParent
 {
   private $items = array();
   private $parent;
@@ -25,7 +25,7 @@ class ListSection
     //この仕組自体を変えないと。。。描画に支障がでるかもしれない
     //同じidを用いて、同ページ扱いで作成は可能か？idはインスタンスが違うのでokだが。。
     //描画の仕様がどうなっているのか不明
-    $item = $this->layout->createItem($this->parent, $id);
+    $item = $this->createItem($this->parent, $id);
     $this->items[$id] = $item;
 
     return $item;
@@ -60,5 +60,16 @@ class ListSection
   {
     return $this->items;
   }
+
+
+    public function isCountable()
+    {
+      return false;
+    }
+
+    public function isPage()
+    {
+      return false;
+    }
 
 }
