@@ -253,12 +253,12 @@ class Layout
     /**
      * @access private
      *
-     * @param Page $owner
+     * @param iParent $owner
      * @param string $id
      * @return Item\AbstractItem
      * @throws Exception\StandardException
      */
-    public function createItem(Page $owner, $id)
+    public function createItem(iParent $owner, $id)
     {
         if (!$this->hasItem($id)) {
             throw new Exception\StandardException('Item Not Found', $id);
@@ -277,7 +277,9 @@ class Layout
                 return new Item\PageNumberItem($owner, $item_format);
                 break;
             case 's-list':
-                return new Item\List\ListItem($owner, $item_format);
+                if($owner->isPage()){
+                  return new Item\List\ListItem($owner, $item_format);
+                }
                 break;
             default:
                 return new Item\BasicItem($owner, $item_format);

@@ -25,7 +25,7 @@ class ListSection
     //この仕組自体を変えないと。。。描画に支障がでるかもしれない
     //同じidを用いて、同ページ扱いで作成は可能か？idはインスタンスが違うのでokだが。。
     //描画の仕様がどうなっているのか不明
-    $item = $this->layout->createItem($parent->parent, $id);
+    $item = $this->layout->createItem($this->parent, $id);
     $this->items[$id] = $item;
 
     return $item;

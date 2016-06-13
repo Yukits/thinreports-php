@@ -23,7 +23,7 @@ abstract class AbstractItem
      * @param Page $parent
      * @param array $format
      */
-    public function __construct(Page $parent, array $format)
+    public function __construct(iParent $parent, array $format)
     {
         $this->parent = $parent;
         $this->format = $format;

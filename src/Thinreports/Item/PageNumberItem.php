@@ -33,7 +33,7 @@ class PageNumberItem extends AbstractItem
     /**
      * {@inheritdoc}
      */
-    public function __construct(Page $parent, array $format)
+    public function __construct(iParent $parent, array $format)
     {
         parent::__construct($parent, $format);
 
