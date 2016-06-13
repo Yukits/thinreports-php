@@ -88,4 +88,31 @@ class ItemManager08 extends AItemManager
   public fuction getListItemFormats(){
     return $this->ls_item_formats;
   }
+
+  public function getTLFVersion()
+  {
+    return $this->format['version'];
+  }
+  public function getPaperType()
+  {
+    return $this->format['config']['page']['paper-type'];
+  }
+  public function getOrientation()
+  {
+    return $this->format['config']['page']['orientation'];
+  }
+  public function getTitle()
+  {
+    return $this->format['config']['title'];
+  }
+
+  public function getPageSize()
+  {
+    if ($this->getPaperType() === 'user') {
+        $page = $this->format['config']['page'];
+        return array($page['width'], $page['height']);
+    } else {
+        return null;
+    }
+  }
 }
