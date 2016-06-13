@@ -56,12 +56,13 @@ class Layout
             throw new Exception\IncompatibleLayout($format['version'], $rules);
         }
 
-        $item_formats = self::extractItemFormats($format['svg']);
+        $item_formats_array = self::extractItemFormats($format['svg']);
         self::cleanFormat($format);
 
         return array(
             'format' => $format,
-            'item_formats' => $item_formats
+            'item_formats' => $item_formats_array['layout']
+            'ls_item_formats' => $tem_formats_array['list']
         );
     }
 
@@ -77,6 +78,7 @@ class Layout
             $layout_format, $matched_items, PREG_SET_ORDER);
 
         $item_formats = array();
+        $ls_item_formats = array();
 
         foreach ($matched_items as $matched_item) {
             $item_format_json = $matched_item[1];
@@ -90,18 +92,20 @@ class Layout
                  $ls_item_format_json = $matched_ls_item[1];
                  $ls_item_format = json_decode($ls_item_format_json, true);
 
-                 //$item_formats[$ls_item_format['id']] = $ls_item_format;
+                 $ls_item_formats[$item_format['id']][$ls_item_format['id']] = $ls_item_format;
                }
             }
             if ($item_format['type'] === Item\PageNumberItem::TYPE_NAME) {
                 self::setPageNumberUniqueId($item_format);
             }
 
-            //果たして、リストのidを登録する必要はあるのだろうか
             $item_formats[$item_format['id']] = $item_format;
         }
 
-        return $item_formats;
+        return array(
+                  'layout' => $item_formats,
+                  'list' => $ls_item_formats
+                );
     }
 
     /**
@@ -163,6 +167,7 @@ class Layout
         $this->filename = $filename;
         $this->format = $definition['format'];
         $this->item_formats = $definition['item_formats'];
+        $this->ls_item_formats = $definition['ls_item_formats'];
         $this->identifier = md5($this->format['svg']);
     }
 
@@ -278,7 +283,7 @@ class Layout
                 break;
             case 's-list':
                 if($owner->isPage()){
-                  return new Item\List\ListItem($owner, $item_format);
+                  return new Item\List\ListItem($owner, $item_format, $this->ls_item_formats[$id]);
                 }
                 break;
             default:

@@ -72,6 +72,11 @@ class ListItem  extends AbstractItem
     return
   }
 
+  public fucntion hasItem($id)
+  {
+    return array_key_exists($id, $this->item_formats);
+  }
+
 
   /**
    * @access private
