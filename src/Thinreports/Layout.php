@@ -34,9 +34,8 @@ class Layout
             throw new Exception\StandardException('Layout File Not Found', $filename);
         }
 
-
-
-        return new self($filename, $item_manager);
+        return new self($filename,
+         TLFParser::getItemManager(file_get_contents($filename, true)));
     }
 
     // /**

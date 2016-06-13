@@ -3,12 +3,12 @@
 abstract class AItemManager
 {
 
-  
-
-  protected $item_formats = array();
 
 
-  abstract protected function json_decode_tlf();
+  protected $format;//tlfファイルをjson形式にdecodeしたもの
+
+
+  abstract protected function getIds();
 
   public fuction createItem()
   {
