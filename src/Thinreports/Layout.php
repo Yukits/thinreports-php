@@ -157,20 +157,22 @@ class Layout
     //     }
     // }
 
-    private $format;
-    private $item_formats = array();
+    // private $format;
+    // private $item_formats = array();
+    private $item_manager;
     private $identifier;
 
     /**
      * @param string $filename
      * @param array $deinition array('format' => array, 'item_formats' => array)
      */
-    public function __construct($filename, array $definition)
+    public function __construct($filename, AItemManager $item_manager)
     {
         $this->filename = $filename;
-        $this->format = $definition['format'];
-        $this->item_formats = $definition['item_formats'];
-        $this->ls_item_formats = $definition['ls_item_formats'];
+        // $this->format = $definition['format'];
+        // $this->item_formats = $definition['item_formats'];
+        // $this->ls_item_formats = $definition['ls_item_formats'];
+        $this->item_manager = $item_manager;
         $this->identifier = md5($this->format['svg']);
     }
 
