@@ -22,10 +22,11 @@ class ListItem  extends AbstractItem
   //footerとheaderは自動改ページのときには変化しないが、addPageのときには初期化される。
   //page_footerはどちらも変化する
 
-  public function __construct(Page $parent, array $format)
+  public function __construct(Page $parent, array $format, array $item_formats)
   {
     parent::__construct($parent, $format);
     $this->auto_page_break = $format['auto_page_break'];
+    $this->item_formats = $item_formats;
   }
 
   public function addRow()
@@ -36,10 +37,11 @@ class ListItem  extends AbstractItem
       return $new_row;
   }
 
-  //いらないかも
   public function addHeader()
   {
-    $this->header = new ListSection($this);
+    if($this->header === null){
+      $this->header = new ListSection($this);
+    }
 
     return $this->header;
   }

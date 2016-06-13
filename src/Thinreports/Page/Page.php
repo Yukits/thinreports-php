@@ -67,7 +67,7 @@ class Page extends BlankPage
     {
         $item = $this->item($id);
 
-        if (!$item->isTypeOf('block')) {
+        if (!$item->isTypeOf('block') || !$item->isTypeOf('s-list')) {
             throw new Exception\StandardException('Unedtiable Item', $id);
         }
         $item->setValue($value);

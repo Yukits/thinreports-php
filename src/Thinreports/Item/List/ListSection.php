@@ -20,12 +20,7 @@ class ListSection implements iParent
       return $this->items[$id];
     }
 
-    //このidによってcreateItemできるが、どのrowに何をいれるのかをidで行うためには、
-    //idはrowごとに一意的になるように変更しなければならない。
-    //この仕組自体を変えないと。。。描画に支障がでるかもしれない
-    //同じidを用いて、同ページ扱いで作成は可能か？idはインスタンスが違うのでokだが。。
-    //描画の仕様がどうなっているのか不明
-    $item = $this->createItem($this->parent, $id);
+    $item = $this->parent->createItem($this, $id);
     $this->items[$id] = $item;
 
     return $item;
