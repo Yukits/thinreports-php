@@ -9,7 +9,9 @@
 
 namespace Thinreports\Page;
 
-class BlankPage
+use Thinreports\Interface\iParent;
+
+class BlankPage implements iParent
 {
     protected $number;
     protected $is_blank = true;
@@ -47,5 +49,13 @@ class BlankPage
     public function getNo()
     {
         return $this->number;
+    }
+
+    /**
+    * @return boolean
+    */
+    public function isPage()
+    {
+      return true;
     }
 }

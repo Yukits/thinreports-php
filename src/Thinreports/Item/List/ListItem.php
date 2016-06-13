@@ -4,8 +4,9 @@ namespace Thinreports\Item\List;
 
 use Thinreports\Page\Page;
 use Thinreports\Item\AbstractItem;
+use Thinreports\Interface\iParent;
 
-class ListItem  extends AbstractItem
+class ListItem  extends AbstractItem implements iParent
 {
   const TYPE_NAME = 's-list';
 
@@ -67,5 +68,15 @@ class ListItem  extends AbstractItem
 
     }
     return
+  }
+
+  public function isCountable()
+  {
+    return false;
+  }
+
+  public function isPage()
+  {
+    return false;
   }
 }
