@@ -6,11 +6,13 @@ use Thinreports\Item;
 
 class ListSection implements iParent
 {
+  private $item_formats;
   private $items = array();
   private $parent;
 
-  public function __construct(ListItem $parent)
+  public function __construct(ListItem $parent, $format)
   {
+    $this->item_formats = $format;
     $this->parent = $parent;
   }
 
@@ -20,8 +22,8 @@ class ListSection implements iParent
       return $this->items[$id];
     }
 
-    $item = $this->parent->createItem($this, $id);
-    $this->items[$id] = $item;
+    // $item = $this->parent->createItem($this, $id);
+    // $this->items[$id] = $item;
 
     return $item;
   }
@@ -57,14 +59,19 @@ class ListSection implements iParent
   }
 
 
-    public function isCountable()
-    {
-      return false;
-    }
+  public function isCountable()
+  {
+    return false;
+  }
 
-    public function isPage()
-    {
-      return false;
-    }
+  public function isPage()
+  {
+    return false;
+  }
+
+  public fuction getItemFormats()
+  {
+    return $this->item_formats;
+  }
 
 }

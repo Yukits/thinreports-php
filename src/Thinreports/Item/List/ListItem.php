@@ -10,8 +10,6 @@ class ListItem  extends AbstractItem
 {
   const TYPE_NAME = 's-list';
 
-  private $item_formats = array();
-
   private $auto_page_break;
 
   private $header;
@@ -22,16 +20,15 @@ class ListItem  extends AbstractItem
   //footerとheaderは自動改ページのときには変化しないが、addPageのときには初期化される。
   //page_footerはどちらも変化する
 
-  public function __construct(Page $parent, array $format, array $item_formats)
+  public function __construct(Page $parent, array $format)
   {
     parent::__construct($parent, $format);
     $this->auto_page_break = $format['auto_page_break'];
-    $this->item_formats = $item_formats;
   }
 
   public function addRow()
   {
-      $new_row = new ListSection($this);
+      $new_row = new ListSection($this, $format['detail']);
       $this->rows[] = $new_row;
 
       return $new_row;
@@ -40,7 +37,7 @@ class ListItem  extends AbstractItem
   public function addHeader()
   {
     if($this->header === null){
-      $this->header = new ListSection($this);
+      $this->header = new ListSection($this, $format['header']);
     }
 
     return $this->header;
@@ -72,43 +69,5 @@ class ListItem  extends AbstractItem
 
     }
     return
-  }
-
-  public fucntion hasItem($id)
-  {
-    return array_key_exists($id, $this->item_formats);
-  }
-
-
-  /**
-   * @access private
-   *
-   * @param ListSection $owner
-   * @param string $id
-   * @return Item\AbstractItem
-   * @throws Exception\StandardException
-   */
-  public function createItem(ListSection $owner, $id)
-  {
-      if (!$this->hasItem($id)) {
-          throw new Exception\StandardException('Item Not Found', $id);
-      }
-
-      $item_format = $this->item_formats[$id];
-
-      switch ($item_format['type']) {
-          case 's-tblock':
-              return new Item\TextBlockItem($owner, $item_format);
-              break;
-          case 's-iblock':
-              return new Item\ImageBlockItem($owner, $item_format);
-              break;
-          case 's-pageno':
-              return new Item\PageNumberItem($owner, $item_format);
-              break;
-          default:
-              return new Item\BasicItem($owner, $item_format);
-              break;
-      }
   }
 }
