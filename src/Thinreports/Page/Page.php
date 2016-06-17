@@ -12,6 +12,7 @@ namespace Thinreports\Page;
 use Thinreports\Report;
 use Thinreports\Layout;
 use Thinreports\Exception;
+use Thinreports\Item;
 
 class Page extends BlankPage
 {
@@ -123,7 +124,7 @@ class Page extends BlankPage
     /**
      * @access private
      *
-     * @return Thinreports\Item\AbstractItem[]
+//     * @return Thinreports\Item\AbstractItem[]
      */
     public function getFinalizedItems()
     {

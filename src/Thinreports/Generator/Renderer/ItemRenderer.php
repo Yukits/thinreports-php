@@ -10,6 +10,7 @@
 namespace Thinreports\Generator\Renderer;
 
 use Thinreports\Item;
+use Thinreports\Item\ItemList;
 
 /**
  * @access private
@@ -35,7 +36,7 @@ class ItemRenderer extends AbstractRenderer
             case $item instanceof Item\PageNumberItem:
                 $this->renderPageNumberItem($item);
                 break;
-            case $item instanceof Item\List\ListItem:
+            case $item instanceof Item\ItemList\ListItem:
                 $this->renderListItem($item);
                 break;
             default:
@@ -205,10 +206,10 @@ class ItemRenderer extends AbstractRenderer
         );
     }
 
-    public function renderListItem(Item\List\ListItem $item)
+    public function renderListItem(ListItem $item)
     {
-        $bounds = $item->getBounds();
-        $row_height = 
+//        $bounds = $item->getBounds();
+//        $row_height = 
 
         //改ページの処理もどこかでやらねばならぬ
         //はみだしてしまうときとかの処理も

@@ -4,10 +4,11 @@ namespace Thinreports\Item\ItemList;
 
 use Thinreports\Page\Page;
 use Thinreports\Item\AbstractItem;
+use Thinreports\Exception;
 
 class ListItem  extends AbstractItem
 {
-  const TYPE_NAME = 's-list';
+  const TYPE_NAME = 'list';
 
   private $auto_page_break;
 
@@ -35,11 +36,30 @@ class ListItem  extends AbstractItem
 
   public function addHeader()
   {
-    if($this->header === null){
+    if($this->header['enabled']){
       $this->header = new ListSection($this, $this->format['header']);
+      return $this->header;
     }
+    return new Exception\ListDisabledException("header");
 
-    return $this->header;
+  }
+  
+  public function addFooter()
+  {
+    if($this->footer['enabled']){
+      $this->footer = new ListSection($this, $this->format['footer']);
+      return $this->footer;
+    }
+    return new Exception\ListDisabledException("footer");
+  }
+
+  public function addPageFooter()
+  {
+    if($this->page_footer['enabled']){
+      $this->page_footer = new ListSection($this, $this->format['page-footer']);
+      return $this->page_footer;
+    }
+    return new Exception\ListDisabledException("page-footer");
   }
 
   public function isAutoPageBreak()

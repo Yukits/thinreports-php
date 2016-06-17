@@ -23,10 +23,10 @@ class ListSection implements iParent
       return $this->items[$id];
     }
 
-    // $item = $this->parent->createItem($this, $id);
-    // $this->items[$id] = $item;
+     $item = $this->parent->createItem($this, $id);
+     $this->items[$id] = $item;
 
-//    return $item;
+     return $item;
   }
 
   /**
@@ -75,4 +75,7 @@ class ListSection implements iParent
     return $this->item_formats;
   }
 
+  public function getFinalizedItems(){
+    return $this->items;
+  }
 }
