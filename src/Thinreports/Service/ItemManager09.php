@@ -1,11 +1,16 @@
 <?php
 
+namespace Thinreports\Service;
+
+use Thinreports\Item;
+use Thinreports\Exception;
+
 class ItemManager09 extends AItemManager
 {
-  public __construct($format)
+  public function __construct($format)
   {
     parent::__construct($format);
-    $this->extractItemFormats($format)
+    $this->extractItemFormats($format);
   }
 
   /**
@@ -52,7 +57,7 @@ class ItemManager09 extends AItemManager
    * @return Item\AbstractItem
    * @throws Exception\StandardException
    */
-  public fuction createItem(iParent $owner, $id)
+  public function createItem(iParent $owner, $id)
   {
     if (!$this->hasItem($id)) {
       throw new Exception\StandardException('Item Not Found', $id);
@@ -77,7 +82,7 @@ class ItemManager09 extends AItemManager
         break;
       case 's-list':
         if($owner->isPage()){
-          return new Item\List\ListItem($owner, $item_format);
+          return new Item\ItemList\ListItem($owner, $item_format);
         }
         break;
       default:
@@ -86,7 +91,7 @@ class ItemManager09 extends AItemManager
     }
   }
 
-  public fuction getListItemFormats(){
+  public function getListItemFormats(){
     return $this->ls_item_formats;
   }
 
@@ -117,4 +122,10 @@ class ItemManager09 extends AItemManager
     // }
     return null;
   }
+
+  public function getFilename()
+  {
+    // TODO: Implement getFilename() method.
+  }
+
 }

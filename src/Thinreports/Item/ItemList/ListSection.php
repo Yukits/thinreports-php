@@ -1,8 +1,9 @@
 <?php
 
-namespace Thinreports\Item\List;
+namespace Thinreports\Item\ItemList;
 
 use Thinreports\Item;
+use Thinreports\Exception;
 
 class ListSection implements iParent
 {
@@ -25,7 +26,7 @@ class ListSection implements iParent
     // $item = $this->parent->createItem($this, $id);
     // $this->items[$id] = $item;
 
-    return $item;
+//    return $item;
   }
 
   /**
@@ -69,7 +70,7 @@ class ListSection implements iParent
     return false;
   }
 
-  public fuction getItemFormats()
+  public function getItemFormats()
   {
     return $this->item_formats;
   }

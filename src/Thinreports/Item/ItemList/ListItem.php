@@ -1,10 +1,9 @@
 <?php
 
-namespace Thinreports\Item\List;
+namespace Thinreports\Item\ItemList;
 
 use Thinreports\Page\Page;
 use Thinreports\Item\AbstractItem;
-use Thinreports\Interface\iParent;
 
 class ListItem  extends AbstractItem
 {
@@ -28,7 +27,7 @@ class ListItem  extends AbstractItem
 
   public function addRow()
   {
-      $new_row = new ListSection($this, $format['detail']);
+      $new_row = new ListSection($this, $this->format['detail']);
       $this->rows[] = $new_row;
 
       return $new_row;
@@ -37,7 +36,7 @@ class ListItem  extends AbstractItem
   public function addHeader()
   {
     if($this->header === null){
-      $this->header = new ListSection($this, $format['header']);
+      $this->header = new ListSection($this, $this->format['header']);
     }
 
     return $this->header;
@@ -57,7 +56,7 @@ class ListItem  extends AbstractItem
   {
     $bounds = array(
       'detail-x'
-    )
+    );
 
     if($this->format['footer-enabled']){
 
@@ -68,6 +67,6 @@ class ListItem  extends AbstractItem
     if($this->format['header-enabled']){
 
     }
-    return
+    return;
   }
 }

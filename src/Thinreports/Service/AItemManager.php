@@ -1,11 +1,13 @@
 <?php
 
+namespace Thinreports\Service;
+
 abstract class AItemManager
 {
   protected $format;//tlfファイルをjson形式にdecodeしたもの
   protected $item_formats;//itemのformatのarray
 
-  public __construct($format)
+  public function __construct($format)
   {
       $this->format = $format;
   }

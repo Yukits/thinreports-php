@@ -9,7 +9,7 @@
 
 namespace Thinreports\Page;
 
-use Thinreports\Interface\iParent;
+use Thinreports\ReportInterface;
 
 class BlankPage implements iParent
 {
