@@ -30,6 +30,7 @@ class TypeFormat
     public function getTypeFormat(){
         switch ($this->version){
             case "0.9.0":
+                return json_decode(self::TYPE_VER_09,true);
                 break;
             case "0.8.0":
                 break;
@@ -41,6 +42,8 @@ class TypeFormat
     const TYPE_VER_09 = '{
         "list": "list",
         "text": "text-block",
+        "page_number": "page_number",
+        "image": "image-block"
     }';
 
 }

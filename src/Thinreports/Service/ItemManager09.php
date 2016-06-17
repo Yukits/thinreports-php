@@ -32,7 +32,7 @@ class ItemManager09 extends AItemManager
       foreach ($format['items'] as $i) {
           $item_format = json_decode($i, true);
 
-          if ($item_format['type'] === Item\PageNumberItem::TYPE_NAME) {
+          if ($item_format['type'] ===  "page_number"){
               self::setPageNumberUniqueId($item_format);
           }
 
@@ -76,16 +76,16 @@ class ItemManager09 extends AItemManager
     }
 
     switch ($item_format['type']) {
-      case 's-tblock':
+      case 'text-block':
         return new Item\TextBlockItem($owner, $item_format);
         break;
-      case 's-iblock':
+      case 'image-block':
         return new Item\ImageBlockItem($owner, $item_format);
         break;
-      case 's-pageno':
+      case 'page-number':
         return new Item\PageNumberItem($owner, $item_format);
         break;
-      case 's-list':
+      case 'list':
         if($owner->isPage()){
           return new Item\ItemList\ListItem($owner, $item_format);
         }
@@ -119,12 +119,6 @@ class ItemManager09 extends AItemManager
 
   public function getPageSize()
   {
-    // if ($this->getPaperType() === 'user') {
-    //     $page = $this->format['config']['page'];
-    //     return array($page['width'], $page['height']);
-    // } else {
-    //     return null;
-    // }
-    return null;
+    return $this->getPaperType();
   }
 }
