@@ -7,9 +7,10 @@ abstract class AItemManager
   protected $format;//tlfファイルをjson形式にdecodeしたもの
   protected $item_formats;//itemのformatのarray
 
-  public function __construct($format)
+  public function __construct($format, $item_formats)
   {
       $this->format = $format;
+      $this->item_formats = $item_formats;
   }
   /**
    * @access private

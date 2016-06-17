@@ -8,18 +8,15 @@ use Thinreports\Exception;
 class ItemManager09 extends AItemManager
 {
   
-  private $item_formats;
-  
   public function __construct($format, $item_formats)
   {
-    parent::__construct($format);
-    $this->item_formats = $item_formats;
+    parent::__construct($format, $item_formats);
   }
 
   public static function newInstance($format)
   {
-    $a = self::extractItemFormats($format);
-    return new self($format, $a);
+    $tmp = self::extractItemFormats($format);
+    return new self($format, $tmp);
   }
 
   /**
@@ -98,10 +95,6 @@ class ItemManager09 extends AItemManager
         return new Item\BasicItem($owner, $item_format);
         break;
     }
-  }
-
-  public function getListItemFormats(){
-    return $this->ls_item_formats;
   }
 
   public function getTLFVersion()
