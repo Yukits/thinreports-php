@@ -40,7 +40,6 @@ class Layout
     }
 
     private $item_manager;
-    private $identifier;
 
     /**
      * @param string $filename
@@ -128,5 +127,9 @@ class Layout
     public function getItemFormats()
     {
         return $this->item_manager->getItemFormats();
+    }
+    
+    public function createItem(iParent $parent, $id){
+        return $this->item_manager->createItem($parent, $id);
     }
 }

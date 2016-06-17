@@ -4,6 +4,7 @@ namespace Thinreports\Item\ItemList;
 
 use Thinreports\Item;
 use Thinreports\Exception;
+use Thinreports\Service\ItemManager09;
 
 class ListSection implements iParent
 {
@@ -13,7 +14,7 @@ class ListSection implements iParent
 
   public function __construct(ListItem $parent, $format)
   {
-    $this->item_formats = $format;
+    $this->item_formats = ItemManager09::extractItemFormats($format);
     $this->parent = $parent;
   }
 
@@ -23,7 +24,7 @@ class ListSection implements iParent
       return $this->items[$id];
     }
 
-     $item = $this->parent->createItem($this, $id);
+     $item = $this->layout->createItem($this, $id);
      $this->items[$id] = $item;
 
      return $item;

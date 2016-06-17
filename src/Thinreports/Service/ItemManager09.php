@@ -7,15 +7,19 @@ use Thinreports\Exception;
 
 class ItemManager09 extends AItemManager
 {
-  public function __construct($format)
+  
+  private $item_formats;
+  
+  public function __construct($format, $item_formats)
   {
     parent::__construct($format);
+    $this->item_formats = $item_formats;
   }
 
   public static function newInstance($format)
   {
-    self::extractItemFormats($format);
-    return new self($format);
+    $a = self::extractItemFormats($format);
+    return new self($format, $a);
   }
 
   /**

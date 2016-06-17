@@ -45,12 +45,14 @@ $rows = array(
         "text" => "row3-text",
         "text#1" => "row3-text#1",
     )
-)
+);
 
-for($rows as $row){
+foreach($rows as $row){
     $default = $page->item('default')->addRow();
     $default->item('text')->setValue($row['text']);
     $default->item('text#1')->setValue($row['text#1']);
 }
+
+$report->generate(__DIR__ . '/sample_09.pdf');
 
 
