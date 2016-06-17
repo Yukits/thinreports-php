@@ -10,7 +10,12 @@ class ItemManager09 extends AItemManager
   public function __construct($format)
   {
     parent::__construct($format);
-    $this->extractItemFormats($format);
+  }
+
+  public static function newInstance($format)
+  {
+    self::extractItemFormats($format);
+    return new self($format);
   }
 
   /**
@@ -19,7 +24,7 @@ class ItemManager09 extends AItemManager
    * @param string $layout_format
    * @return array
    */
-  public function extractItemFormats($format)
+  public static function extractItemFormats($format)
   {
 
       $item_formats = array();
@@ -122,10 +127,4 @@ class ItemManager09 extends AItemManager
     // }
     return null;
   }
-
-  public function getFilename()
-  {
-    // TODO: Implement getFilename() method.
-  }
-
 }

@@ -162,9 +162,4 @@ class ItemManager08 extends AItemManager
         return null;
     }
   }
-    
-    public function getFilename()
-    {
-        // TODO: Implement getFilename() method.
-    }
 }

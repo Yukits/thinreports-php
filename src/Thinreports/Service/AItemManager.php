@@ -37,7 +37,6 @@ abstract class AItemManager
   abstract public function getPaperType();
   abstract public function getOrientation();
   abstract public function getTitle();
-  abstract public function getFilename();
   abstract public function getPageSize();
 
 }

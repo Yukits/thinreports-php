@@ -1,5 +1,9 @@
 <?php
 
+namespace Thinreports\Service;
+
+use Thinreports\Exception;
+
 class TLFParser
 {
 
@@ -20,7 +24,8 @@ class TLFParser
     if(!version_compare($format['version'], '0.9.0', '>=')){
       return new ItemManager09($format);
     }else{
-      return new ItemManager08($format);
+//      return new ItemManager08($format);
+        return new Exception\IncompatibleLayout($format['version'], "Please use layout ver 0.9.x");
     }
   }
 
