@@ -50,7 +50,6 @@ class Layout
     {
         $this->filename = $filename;
         $this->item_manager = $item_manager;
-        $this->identifier = md5($this->format['svg']);
     }
 
     /**
@@ -109,27 +108,6 @@ class Layout
     public function getLastVersion()
     {
         return $this->item_manager->getTLFVersion();
-    }
-
-    // /**
-    //  * @access private
-    //  *
-    //  * @return string
-    //  */
-    // public function getSVG()
-    // {
-    //     return $this->format['svg'];
-    // }
-
-
-    /**
-     * @access private
-     *
-     * @return string
-     */
-    public function getIdentifier()
-    {
-        return $this->identifier;
     }
 
     /**
