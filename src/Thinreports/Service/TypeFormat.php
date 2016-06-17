@@ -43,7 +43,10 @@ class TypeFormat
         "list": "list",
         "text": "text-block",
         "page_number": "page_number",
-        "image": "image-block"
+        "image": "image-block",
+        "rect" : "rect"
+        "ellipse": "ellipse",
+        "line": "line"
     }';
 
 }
