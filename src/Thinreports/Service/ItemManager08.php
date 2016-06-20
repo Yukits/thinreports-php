@@ -11,8 +11,8 @@ class ItemManager08 extends AItemManager
 
   public function __construct($format)
   {
-    parent::__construct($format);
-    initialize();
+//    parent::__construct($format);
+//    initialize();
   }
 
   public function initialize()

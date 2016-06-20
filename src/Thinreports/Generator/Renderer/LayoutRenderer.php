@@ -36,36 +36,38 @@ class LayoutRenderer extends AbstractRenderer
      */
     public function parse(Layout $layout)
     {
+        
+        
 //        $svg = preg_replace('<%.+?%>', '', $layout->getSVG());
 //
 //        $xml = new \SimpleXMLElement($svg);
 //        $xml->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
 //        $xml->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
-
-        $items = array();
-
-        foreach ($xml->g->children() as $element) {
-            $attributes = (array) $element->attributes();
-            $attributes = $attributes['@attributes'];
-
-            switch ($attributes['class']) {
-                case 's-text':
-                    $text_lines = array();
-
-                    foreach ($element->text as $text_line) {
-                        $text_lines[] = $text_line;
-                    }
-                    $attributes['content'] = implode("\n", $text_lines);
-                    break;
-                case 's-image':
-                    $xlink_attribute = $element->attributes('xlink', true);
-                    $attributes['xlink:href'] = (string) $xlink_attribute['href'];
-                    break;
-            }
-
-            $items[] = $attributes;
-        }
-        return $items;
+//
+//        $items = array();
+//
+//        foreach ($xml->g->children() as $element) {
+//            $attributes = (array) $element->attributes();
+//            $attributes = $attributes['@attributes'];
+//
+//            switch ($attributes['class']) {
+//                case 'text':
+//                    $text_lines = array();
+//
+//                    foreach ($element->text as $text_line) {
+//                        $text_lines[] = $text_line;
+//                    }
+//                    $attributes['content'] = implode("\n", $text_lines);
+//                    break;
+//                case 'image':
+//                    $xlink_attribute = $element->attributes('xlink', true);
+//                    $attributes['xlink:href'] = (string) $xlink_attribute['href'];
+//                    break;
+//            }
+//
+//            $items[] = $attributes;
+//        }
+//        return $items;
     }
 
     public function render()

@@ -8,7 +8,6 @@ use Thinreports\ReportInterface;
 
 class ItemManager09 extends AItemManager
 {
-
   public function __construct($format, $item_formats)
   {
     parent::__construct($format, $item_formats);
@@ -17,7 +16,7 @@ class ItemManager09 extends AItemManager
   public static function newInstance($format)
   {
     $tmp = self::extractItemFormats($format);
-    return new self($format, $tmp);
+    return new self($format, $tmp[0], $tmp[1]);
   }
 
   /**
@@ -30,18 +29,46 @@ class ItemManager09 extends AItemManager
   {
 
       $item_formats = array();
+      $static_images = array();
+      $static_texts = array();
+      $static_lines = array();
+      $static_ellipses = array();
+      $static_rects = array();
 
       foreach ($format['items'] as $i) {
           $item_format = $i;
 
-          if ($item_format['type'] ===  "page_number"){
-              self::setPageNumberUniqueId($item_format);
+          switch ($item_format['type']){
+              case 'page-number':
+                  self::setPageNumberUniqueId($item_format);
+                  break;
+              case 'image':
+                  $static_images[] = $item_format;
+                  break;
+              case 'text':
+                  $static_texts[] = $item_format;
+                  break;
+              case 'line':
+                  $static_lines[] = $item_format;
+                  break;
+              case 'ellipse':
+                  $static_ellipses[] = $item_format;
+                  break;
+              case 'rect':
+                  $static_rects[] = $item_format;
+                  break;
           }
-
           $item_formats[$item_format['id']] = $item_format;
       }
 
-      return $item_formats;
+      $statics = array(
+        "text" => $static_texts,
+          "image" => $static_images,
+          "line" => $static_lines,
+          "ellipse" => $static_ellipses,
+          "rect" => $static_rects
+      );
+      return array($item_formats, $statics);
   }
 
   /**

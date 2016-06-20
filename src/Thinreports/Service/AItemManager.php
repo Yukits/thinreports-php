@@ -9,11 +9,13 @@ abstract class AItemManager
 {
   protected $format;//tlfファイルをjson形式にdecodeしたもの
   protected $item_formats;//itemのformatのarray
+    protected $static_item_formats;
 
-  public function __construct($format, $item_formats)
+  public function __construct($format, $item_formats, $static_item_formats)
   {
       $this->format = $format;
       $this->item_formats = $item_formats;
+      $this->static_item_formats = $static_item_formats;
   }
   /**
    * @access private
@@ -35,6 +37,10 @@ abstract class AItemManager
   {
       return $this->item_formats;
   }
+
+    public function getStaticItemFormats(){
+        return $this->static_item_formats;
+    }
 
   abstract public function createItem(ReportInterface\iParent $owner, $id);
   abstract public function getTLFVersion();
