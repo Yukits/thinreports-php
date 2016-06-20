@@ -88,7 +88,7 @@ class TextBlockItem extends AbstractBlockItem
     }
 
     /**
-     
+
      */
     public function isFormatEnabled()
     {
@@ -138,6 +138,6 @@ class TextBlockItem extends AbstractBlockItem
     public function hasReference()
     {
 //        return $this->format['ref-id'] !== '';
-        return $this->format['type'] == 'text';
+        return $this->format['reference-id'] !== '';
     }
 }

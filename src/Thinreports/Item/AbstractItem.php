@@ -11,6 +11,7 @@ namespace Thinreports\Item;
 
 use Thinreports\Page\Page;
 use Thinreports\ReportInterface;
+use Thinreports\Exception;
 
 abstract class AbstractItem
 {
@@ -167,15 +168,15 @@ abstract class AbstractItem
         return $this->getType() === $type_name;
     }
 
-    /**
-     * @access private
-     *
-     * @return array
-     */
-    public function getSVGAttributes()
-    {
-        return $this->format['svg']['attrs'];
-    }
+//    /**
+//     * @access private
+//     *
+//     * @return array
+//     */
+//    public function getSVGAttributes()
+//    {
+//        return $this->format['svg']['attrs'];
+//    }
 
     /**
      * @access private

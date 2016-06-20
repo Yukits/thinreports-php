@@ -11,10 +11,13 @@ namespace Thinreports\Item;
 
 use Thinreports\ReportInterface;
 use Thinreports\Item\Style;
+use Thinreports\Service;
 
 class BasicItem extends AbstractItem
 {
     const TYPE_NAME = 'basic';
+
+    private $type_formatter;
 
     /**
      * {@inheritdoc}
@@ -22,6 +25,8 @@ class BasicItem extends AbstractItem
     public function __construct(ReportInterface\iParent $parent, array $format)
     {
         parent::__construct($parent, $format);
+        $this->type_formatter = Service\TypeFormat::newInstance("0.9.0");
+
 
         switch (true) {
             case $this->isImage():
@@ -43,7 +48,7 @@ class BasicItem extends AbstractItem
      */
     public function isImage()
     {
-        return $this->isTypeOf('s-image');
+        return $this->type_formatter->getTypeFormat()['image'];
     }
 
     /**
@@ -53,7 +58,7 @@ class BasicItem extends AbstractItem
      */
     public function isText()
     {
-        return $this->isTypeOf('s-text');
+        return $this->type_formatter->getTypeFormat()['text'];
     }
 
     /**
@@ -63,7 +68,7 @@ class BasicItem extends AbstractItem
      */
     public function isRect()
     {
-        return $this->isTypeOf('s-rect');
+        return $this->type_formatter->getTypeFormat()['rect'];
     }
 
     /**
@@ -73,7 +78,7 @@ class BasicItem extends AbstractItem
      */
     public function isEllipse()
     {
-        return $this->isTypeOf('s-ellipse');
+        return $this->type_formatter->getTypeFormat()['ellipse'];
     }
 
     /**
@@ -83,15 +88,7 @@ class BasicItem extends AbstractItem
      */
     public function isLine()
     {
-        return $this->isTypeOf('s-line');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function isTypeOf($type_name)
-    {
-        return parent::isTypeOf($type_name) || self::TYPE_NAME == $type_name;
+        return $this->type_formatter->getTypeFormat()['line'];
     }
 
     /**

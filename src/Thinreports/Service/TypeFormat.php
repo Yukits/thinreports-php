@@ -38,15 +38,17 @@ class TypeFormat
                 break;
         }
     }
-    
+
     const TYPE_VER_09 = '{
         "list": "list",
-        "text": "text-block",
-        "page_number": "page_number",
-        "image": "image-block",
+        "e-text": "text-block",
+        "page_number": "page-number",
+        "e-image": "image-block",
         "rect" : "rect"
         "ellipse": "ellipse",
-        "line": "line"
+        "line": "line",
+        "text": "text",
+        "image": "image"
     }';
 
 }
