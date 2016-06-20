@@ -11,7 +11,7 @@ namespace Thinreports\Page;
 
 use Thinreports\ReportInterface;
 
-class BlankPage implements iParent
+class BlankPage implements ReportInterface\iParent
 {
     protected $number;
     protected $is_blank = true;

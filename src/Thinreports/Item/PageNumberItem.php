@@ -9,7 +9,7 @@
 
 namespace Thinreports\Item;
 
-use Thinreports\Page\Page;
+use Thinreports\ReportInterface;
 use Thinreports\Item\Style\TextStyle;
 
 class PageNumberItem extends AbstractItem
@@ -33,7 +33,7 @@ class PageNumberItem extends AbstractItem
     /**
      * {@inheritdoc}
      */
-    public function __construct(iParent $parent, array $format)
+    public function __construct(ReportInterface\iParent $parent, array $format)
     {
         parent::__construct($parent, $format);
 

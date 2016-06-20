@@ -11,7 +11,7 @@ namespace Thinreports;
 
 use Thinreports\Exception;
 use Thinreports\Item;
-use Thinreports\Page\Page;
+use Thinreports\ReportInterface;
 use Thinreports\Service\AItemManager;
 use Thinreports\Service\TLFParser;
 
@@ -128,8 +128,8 @@ class Layout
     {
         return $this->item_manager->getItemFormats();
     }
-    
-    public function createItem(iParent $parent, $id){
+
+    public function createItem(ReportInterface\iParent $parent, $id){
         return $this->item_manager->createItem($parent, $id);
     }
 }

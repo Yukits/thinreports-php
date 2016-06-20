@@ -13,6 +13,7 @@ use Thinreports\Report;
 use Thinreports\Layout;
 use Thinreports\Exception;
 use Thinreports\Item;
+use Thinreports\ReportInterface;
 
 class Page extends BlankPage
 {

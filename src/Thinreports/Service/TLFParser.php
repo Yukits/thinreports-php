@@ -21,11 +21,13 @@ class TLFParser
         throw new Exception\IncompatibleLayout($format['version'], $rules);
     }
 
-    if(!version_compare($format['version'], '0.9.0', '>=')){
+    if(version_compare($format['version'], '0.9.0', '>=')){
       return ItemManager09::newInstance($format);
     }else{
 //      return new ItemManager08($format);
-        return new Exception\IncompatibleLayout($format['version'], "Please use layout ver 0.9.x");
+        echo "Incompatible layout";
+        throw new Exception\IncompatibleLayout($format['version'], array('0.9.0','0.9.x'));
+        return new ItemManager08($format);
     }
   }
 

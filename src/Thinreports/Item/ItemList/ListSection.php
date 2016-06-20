@@ -5,8 +5,9 @@ namespace Thinreports\Item\ItemList;
 use Thinreports\Item;
 use Thinreports\Exception;
 use Thinreports\Service\ItemManager09;
+use Thinreports\ReportInterface;
 
-class ListSection implements iParent
+class ListSection implements ReportInterface\iParent
 {
   private $item_formats;
   private $items = array();

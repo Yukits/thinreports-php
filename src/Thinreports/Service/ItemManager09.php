@@ -4,10 +4,11 @@ namespace Thinreports\Service;
 
 use Thinreports\Item;
 use Thinreports\Exception;
+use Thinreports\ReportInterface;
 
 class ItemManager09 extends AItemManager
 {
-  
+
   public function __construct($format, $item_formats)
   {
     parent::__construct($format, $item_formats);
@@ -31,7 +32,8 @@ class ItemManager09 extends AItemManager
       $item_formats = array();
 
       foreach ($format['items'] as $i) {
-          $item_format = json_decode($i, true);
+          print_r($i);
+          $item_format = $i;
 
           if ($item_format['type'] ===  "page_number"){
               self::setPageNumberUniqueId($item_format);
@@ -63,7 +65,7 @@ class ItemManager09 extends AItemManager
    * @return Item\AbstractItem
    * @throws Exception\StandardException
    */
-  public function createItem(iParent $owner, $id)
+  public function createItem(ReportInterface\iParent $owner, $id)
   {
     if (!$this->hasItem($id)) {
       throw new Exception\StandardException('Item Not Found', $id);

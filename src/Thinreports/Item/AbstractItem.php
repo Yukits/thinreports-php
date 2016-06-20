@@ -10,6 +10,7 @@
 namespace Thinreports\Item;
 
 use Thinreports\Page\Page;
+use Thinreports\ReportInterface;
 
 abstract class AbstractItem
 {
@@ -23,7 +24,7 @@ abstract class AbstractItem
      * @param Page $parent
      * @param array $format
      */
-    public function __construct(iParent $parent, array $format)
+    public function __construct(ReportInterface\iParent $parent, array $format)
     {
         $this->parent = $parent;
         $this->format = $format;

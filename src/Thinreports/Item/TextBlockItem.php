@@ -9,10 +9,9 @@
 
 namespace Thinreports\Item;
 
-use Thinreports\Page\Page;
 use Thinreports\Item\Style\TextStyle;
-use Thinreports\Item\TextFormatter;
 use Thinreports\Exception;
+use Thinreports\ReportInterface;
 
 class TextBlockItem extends AbstractBlockItem
 {
@@ -25,7 +24,7 @@ class TextBlockItem extends AbstractBlockItem
     /**
      * {@inheritdoc}
      */
-    public function __construct(iParent $parent, array $format)
+    public function __construct(ReportInterface\iParent $parent, array $format)
     {
         parent::__construct($parent, $format);
 
@@ -89,7 +88,7 @@ class TextBlockItem extends AbstractBlockItem
     }
 
     /**
-     * @return boolean
+     
      */
     public function isFormatEnabled()
     {
@@ -138,6 +137,7 @@ class TextBlockItem extends AbstractBlockItem
      */
     public function hasReference()
     {
-        return $this->format['ref-id'] !== '';
+//        return $this->format['ref-id'] !== '';
+        return $this->format['type'] == 'text';
     }
 }
