@@ -27,7 +27,7 @@ class LayoutRenderer extends AbstractRenderer
     public function __construct(PDF\Document $doc, Layout $layout)
     {
         parent::__construct($doc);
-        $this->items = $this->parse($layout);
+//        $this->items = $this->parse($layout);
     }
 
     /**
@@ -36,11 +36,11 @@ class LayoutRenderer extends AbstractRenderer
      */
     public function parse(Layout $layout)
     {
-        $svg = preg_replace('<%.+?%>', '', $layout->getSVG());
-
-        $xml = new \SimpleXMLElement($svg);
-        $xml->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
-        $xml->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
+//        $svg = preg_replace('<%.+?%>', '', $layout->getSVG());
+//
+//        $xml = new \SimpleXMLElement($svg);
+//        $xml->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
+//        $xml->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
 
         $items = array();
 

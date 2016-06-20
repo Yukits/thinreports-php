@@ -48,7 +48,8 @@ class TypeFormat
         "ellipse": "ellipse",
         "line": "line",
         "text": "text",
-        "image": "image"
+        "image": "image",
+        "reference-id": "reference-id"
     }';
 
 }

@@ -32,7 +32,6 @@ class ItemManager09 extends AItemManager
       $item_formats = array();
 
       foreach ($format['items'] as $i) {
-          print_r($i);
           $item_format = $i;
 
           if ($item_format['type'] ===  "page_number"){
@@ -105,7 +104,7 @@ class ItemManager09 extends AItemManager
   }
   public function getPaperType()
   {
-    return $this->format['report']['paper-type'];//json_decode必要か？
+    return $this->format['report']['paper-type'];
   }
   public function getOrientation()
   {
@@ -120,4 +119,12 @@ class ItemManager09 extends AItemManager
   {
     return $this->getPaperType();
   }
+
+    public function getMargin(){
+        return $this->format['report']['margin'];
+    }
+
+    public function createLayoutIdentifier(){
+        return md5((string)$this->format);
+    }
 }

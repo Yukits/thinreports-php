@@ -135,7 +135,6 @@ class Document
     public function registerPageFormat(Layout $layout)
     {
         $layout_identifier = $layout->getIdentifier();
-
         if (!array_key_exists($layout_identifier, $this->page_formats)) {
             $this->page_formats[$layout_identifier] = $this->buildPageFormat($layout);
         }

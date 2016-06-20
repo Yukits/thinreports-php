@@ -25,7 +25,7 @@ class ListSection implements ReportInterface\iParent
       return $this->items[$id];
     }
 
-     $item = $this->layout->createItem($this, $id);
+     $item = $this->parent->getParent()->getLayout()->createItem($this, $id);
      $this->items[$id] = $item;
 
      return $item;

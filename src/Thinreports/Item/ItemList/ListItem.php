@@ -36,30 +36,31 @@ class ListItem  extends AbstractItem
 
   public function addHeader()
   {
-    if($this->header['enabled']){
+
+    if($this->format['header']['enabled']){
       $this->header = new ListSection($this, $this->format['header']);
       return $this->header;
     }
-    return new Exception\ListDisabledException("header");
+    throw new Exception\ListDisabledException("header");
 
   }
-  
+
   public function addFooter()
   {
-    if($this->footer['enabled']){
+    if($this->format['footer']['enabled']){
       $this->footer = new ListSection($this, $this->format['footer']);
       return $this->footer;
     }
-    return new Exception\ListDisabledException("footer");
+    throw new Exception\ListDisabledException("footer");
   }
 
   public function addPageFooter()
   {
-    if($this->page_footer['enabled']){
+    if($this->format['page-footer']['enabled']){
       $this->page_footer = new ListSection($this, $this->format['page-footer']);
       return $this->page_footer;
     }
-    return new Exception\ListDisabledException("page-footer");
+    throw new Exception\ListDisabledException("page-footer");
   }
 
   public function isAutoPageBreak()

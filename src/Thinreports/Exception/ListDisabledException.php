@@ -13,7 +13,7 @@ class ListDisabledException extends StandardException
 {
     public function __construct($kind)
     {
-        $messages = $kind . 'is disabled. could not create' . $kind;
+        $messages = $kind . ' setting is disabled. could not create ' . $kind;
         parent::__construct($messages);
     }
 }

@@ -29,7 +29,8 @@ abstract class AbstractItem
     {
         $this->parent = $parent;
         $this->format = $format;
-        $this->is_visible = $format['display'] === 'true';
+//        $this->is_visible = $format['display'] === 'true';
+        $this->is_visible = $format['display'] == '1';
     }
 
     /**

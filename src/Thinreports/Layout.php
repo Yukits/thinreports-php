@@ -51,6 +51,9 @@ class Layout
         $this->item_manager = $item_manager;
     }
 
+    public function getIdentifier(){
+        return $this->item_manager->createLayoutIdentifier();
+    }
     /**
      * @return string
      */

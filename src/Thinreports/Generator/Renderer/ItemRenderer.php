@@ -23,23 +23,29 @@ class ItemRenderer extends AbstractRenderer
     public function render(Item\AbstractItem $item)
     {
         if (!$this->isRenderable($item)) {
+            print("not renderable");
             return;
         }
 
         switch (true) {
             case $item instanceof Item\TextBlockItem:
+                print("text-block");
                 $this->renderTextBlockItem($item);
                 break;
             case $item instanceof Item\ImageBlockItem:
+                print("image-block");
                 $this->renderImageBlockItem($item);
                 break;
             case $item instanceof Item\PageNumberItem:
+                print("page-number");
                 $this->renderPageNumberItem($item);
                 break;
             case $item instanceof Item\ItemList\ListItem:
+                print("list");
                 $this->renderListItem($item);
                 break;
             default:
+                print("default");
                 $this->renderBasicItem($item);
                 break;
         }
@@ -51,22 +57,28 @@ class ItemRenderer extends AbstractRenderer
      */
     public function isRenderable(Item\AbstractItem $item)
     {
+        echo "isRendarable";
         if (!$item->isVisible()) {
+            print("not-visible");
             return false;
         }
 
         switch (true) {
             case $item instanceof Item\TextBlockItem:
+                print("text-block");
                 return $item->hasReference() || $item->isPresent();
                 break;
             case $item instanceof Item\ImageBlockItem:
+                print("image-block");
                 return $item->isPresent();
                 break;
             case $item instanceof Item\PageNumberItem:
+                print("page-num");
                 $page = $item->getParent();
                 return $page->isCountable() && $item->isForReport();
                 break;
             default:
+                print("default");
                 return true;
                 break;
         }
@@ -206,17 +218,19 @@ class ItemRenderer extends AbstractRenderer
         );
     }
 
-    public function renderListItem(ListItem $item)
+    public function renderListItem(Item\ItemList\ListItem $item)
     {
 //        $bounds = $item->getBounds();
-//        $row_height = 
+//        $row_height =
 
         //改ページの処理もどこかでやらねばならぬ
         //はみだしてしまうときとかの処理も
+        
+        //header,footer,page-footerの処理
 
         foreach ($item->getRows() as $row) {
           foreach ($row->getItems() as $ls_item) {
-            render($ls_item); //これでうまくいくのか？リスト用の処理はいらないか？
+            $this->render($ls_item); //これでうまくいくのか？リスト用の処理はいらないか？
           }
           //描画において行を増やす処理を行う(最後以外)
         }
