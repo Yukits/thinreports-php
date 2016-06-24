@@ -13,6 +13,8 @@ $page = $report->addPage();
 $page->item('text')->setValue('land-text');
 $page->item('text#1')->setValue('land-text#1');
 
+$page->item('image')->setSource()->setValue(__DIR__ . '/ocean.JPG');
+
 ////header
 //$default = $page->item('default')->addHeader();
 //
