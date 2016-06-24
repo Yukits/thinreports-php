@@ -31,12 +31,12 @@ abstract class AbstractRenderer
 
     public function buildGraphicStyles(array $attrs)
     {
-//        if (array_key_exists('stroke-opacity', $attrs)
-//            && $svg_attrs['stroke-opacity'] === '0') {
-//            $stroke_width = 0;
-//        } else {
-//            $stroke_width = $svg_attrs['stroke-width'];
-//        }
+        if (array_key_exists('stroke-opacity', $attrs)
+            && $svg_attrs['stroke-opacity'] === '0') {
+            $stroke_width = 0;
+        } else {
+            $stroke_width = $svg_attrs['stroke-width'];
+        }
 
         return array(
             'stroke_color' => $attrs['style']['border-color'],
@@ -50,7 +50,7 @@ abstract class AbstractRenderer
     public function buildTextStyles(array $attrs)
     {
         return array(
-            'font_family'    => $attrs['style']['font-family'],
+            'font_family'    => $attrs['style']['font-family'][0],
             'font_size'      => $attrs['style']['font-size'],
             'font_style'     => $attrs['style']['font-style'],
             'color'          => $attrs['style']['color'],
@@ -58,57 +58,57 @@ abstract class AbstractRenderer
             'letter_spacing' => $attrs['letter-spacing']
         );
     }
-//
-//    /**
-//     * @param array $svg_attrs
-//     * @return string[]
-//     */
-//    public function buildFontStyle(array $svg_attrs)
-//    {
-//        $styles = array();
-//
-//        if ($svg_attrs['font-weight'] === 'bold') {
-//            $styles[] = 'bold';
-//        }
-//        if ($svg_attrs['font-style'] === 'italic') {
-//            $styles[] = 'italic';
-//        }
-//
-//        $decoration = $svg_attrs['text-decoration'];
-//
-//        if (!empty($decoration) && $decoration !== 'none') {
-//            $decorations = explode(' ', $decoration);
-//
-//            if (in_array('underline', $decorations)) {
-//                $styles[] = 'underline';
-//            }
-//            if (in_array('line-through', $decorations)) {
-//                $styles[] = 'strikethrough';
-//            }
-//        }
-//        return $styles;
-//    }
 
-//    /**
-//     * @param string $align
-//     * @return string
-//     */
-//    public function buildTextAlign($align)
-//    {
-//        switch ($align) {
-//            case 'start':
-//                return 'left';
-//                break;
-//            case 'middle':
-//                return 'center';
-//                break;
-//            case 'end':
-//                return 'right';
-//                break;
-//            default:
-//                return 'left';
-//        }
-//    }
+    /**
+     * @param array $svg_attrs
+     * @return string[]
+     */
+    public function buildFontStyle(array $svg_attrs)
+    {
+        $styles = array();
+
+        if ($svg_attrs['font-weight'] === 'bold') {
+            $styles[] = 'bold';
+        }
+        if ($svg_attrs['font-style'] === 'italic') {
+            $styles[] = 'italic';
+        }
+
+        $decoration = $svg_attrs['text-decoration'];
+
+        if (!empty($decoration) && $decoration !== 'none') {
+            $decorations = explode(' ', $decoration);
+
+            if (in_array('underline', $decorations)) {
+                $styles[] = 'underline';
+            }
+            if (in_array('line-through', $decorations)) {
+                $styles[] = 'strikethrough';
+            }
+        }
+        return $styles;
+    }
+
+    /**
+     * @param string $align
+     * @return string
+     */
+    public function buildTextAlign($align)
+    {
+        switch ($align) {
+            case 'start':
+                return 'left';
+                break;
+            case 'middle':
+                return 'center';
+                break;
+            case 'end':
+                return 'right';
+                break;
+            default:
+                return 'left';
+        }
+    }
 
     /**
      * @param string|null $valign
@@ -119,18 +119,18 @@ abstract class AbstractRenderer
         return $valign ?: 'top';
     }
 
-//    /**
-//     * @param string|null $letter_spacing
-//     * @return string|null
-//     */
-//    public function buildLetterSpacing($letter_spacing)
-//    {
-//        if (in_array($letter_spacing, array(null, 'auto', 'normal'))) {
-//            return null;
-//        } else {
-//            return $letter_spacing;
-//        }
-//    }
+    /**
+     * @param string|null $letter_spacing
+     * @return string|null
+     */
+    public function buildLetterSpacing($letter_spacing)
+    {
+        if (in_array($letter_spacing, array(null, 'auto', 'normal'))) {
+            return null;
+        } else {
+            return $letter_spacing;
+        }
+    }
 
     /**
      * @param array $svg_attrs

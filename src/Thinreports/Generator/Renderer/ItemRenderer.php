@@ -23,7 +23,6 @@ class ItemRenderer extends AbstractRenderer
     public function render(Item\AbstractItem $item)
     {
         if (!$this->isRenderable($item)) {
-            print("not renderable");
             return;
         }
 
@@ -57,7 +56,6 @@ class ItemRenderer extends AbstractRenderer
      */
     public function isRenderable(Item\AbstractItem $item)
     {
-        echo "isRendarable";
         if (!$item->isVisible()) {
             print("not-visible");
             return false;
@@ -225,7 +223,7 @@ class ItemRenderer extends AbstractRenderer
 
         //改ページの処理もどこかでやらねばならぬ
         //はみだしてしまうときとかの処理も
-        
+
         //header,footer,page-footerの処理
 
         foreach ($item->getRows() as $row) {

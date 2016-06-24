@@ -101,6 +101,16 @@ class BasicStyle
      */
     protected function initializeStyles(array $item_format)
     {
-        $this->styles = $item_format['svg']['attrs'] ?: array();
+        $this->styles = $item_format;
+//        $this->styles = $item_format['svg']['attrs'] ?: array();
+//        $this->styles = array(
+//            "x" => $item_format['x'],
+//            "y" => $item_format['y'],
+//            "letter-spacing" => ($item_format['style']['letter-spacing'] ?: "normal"),
+//            "font-size" => $item_format['style']['font-size'],
+//            "font-family" => $item_format['style']['font-family'][0],
+//            "font-size" => $item_format['style']['font-size'],
+//            "font-style" => ($item_format['style']['font-style'][0] ?: "normal")
+//        );
     }
 }
