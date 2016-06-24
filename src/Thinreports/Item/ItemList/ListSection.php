@@ -13,9 +13,9 @@ class ListSection implements ReportInterface\iParent
   private $items = array();
   private $parent;
 
-  public function __construct(ListItem $parent, $format)
+  public function __construct(ListItem $parent,array $format)
   {
-    $this->item_formats = ItemManager09::extractItemFormats($format);
+    $this->item_formats = ItemManager09::extractItemFormats($format)[0];
     $this->parent = $parent;
   }
 

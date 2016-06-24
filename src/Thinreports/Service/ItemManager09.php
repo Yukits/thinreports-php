@@ -3,14 +3,15 @@
 namespace Thinreports\Service;
 
 use Thinreports\Item;
+use Thinreports\Item\ItemList;
 use Thinreports\Exception;
 use Thinreports\ReportInterface;
 
 class ItemManager09 extends AItemManager
 {
-  public function __construct($format, $item_formats)
+  public function __construct($format, $item_formats, $static)
   {
-    parent::__construct($format, $item_formats);
+    parent::__construct($format, $item_formats, $static);
   }
 
   public static function newInstance($format)
@@ -19,12 +20,6 @@ class ItemManager09 extends AItemManager
     return new self($format, $tmp[0], $tmp[1]);
   }
 
-  /**
-   * @access private
-   *
-   * @param string $layout_format
-   * @return array
-   */
   public static function extractItemFormats($format)
   {
 
@@ -57,8 +52,10 @@ class ItemManager09 extends AItemManager
               case 'rect':
                   $static_rects[] = $item_format;
                   break;
+              default:
+                  $item_formats[$item_format['id']] = $item_format;
+                  break;
           }
-          $item_formats[$item_format['id']] = $item_format;
       }
 
       $statics = array(

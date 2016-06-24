@@ -58,4 +58,5 @@ class BlankPage implements ReportInterface\iParent
     {
       return true;
     }
+
 }

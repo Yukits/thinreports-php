@@ -131,6 +131,10 @@ class Layout
     {
         return $this->item_manager->getItemFormats();
     }
+    
+    public function getStaticItemFormats(){
+        return $this->item_manager->getStaticItemFormats();
+    }
 
     public function createItem(ReportInterface\iParent $parent, $id){
         return $this->item_manager->createItem($parent, $id);

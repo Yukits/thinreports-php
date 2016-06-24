@@ -154,12 +154,6 @@ class Report
         }
     }
 
-    /**
-     * @access private
-     *
-     * @param string|null $layout_filename
-     * @return Layout
-     */
     public function loadLayout($layout_filename = null)
     {
         if ($layout_filename !== null) {

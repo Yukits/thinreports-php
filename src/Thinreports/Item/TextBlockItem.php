@@ -15,7 +15,7 @@ use Thinreports\ReportInterface;
 
 class TextBlockItem extends AbstractBlockItem
 {
-    const TYPE_NAME = 's-tblock';
+    const TYPE_NAME = 'text-block';
 
     private $format_enabled = null;
     private $reference_item = null;
@@ -26,6 +26,8 @@ class TextBlockItem extends AbstractBlockItem
      */
     public function __construct(ReportInterface\iParent $parent, array $format)
     {
+////        echo "txt item";
+//        print_r($format);
         parent::__construct($parent, $format);
 
         $this->style = new TextStyle($format);

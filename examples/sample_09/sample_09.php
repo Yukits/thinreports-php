@@ -13,23 +13,23 @@ $page = $report->addPage();
 $page->item('text')->setValue('land-text');
 $page->item('text#1')->setValue('land-text#1');
 
-//header
-$default = $page->item('default')->addHeader();
-
-$default->item('text')->setValue('header-text');
-$default->item('text#1')->setValue('header-text#1');
-
-//footer
-$default = $page->item('default')->addFooter();
-
-$default->item('text')->setValue('footer-text');
-$default->item('text#1')->setValue('footer-text#1');
-
-//page-footer
-$default = $page->item('default')->addPageFooter();
-
-$default->item('text')->setValue('page-footer-text');
-$default->item('text#1')->setValue('page-footer-text#1');
+////header
+//$default = $page->item('default')->addHeader();
+//
+//$default->item('text')->setValue('header-text');
+//$default->item('text#1')->setValue('header-text#1');
+//
+////footer
+//$default = $page->item('default')->addFooter();
+//
+//$default->item('text')->setValue('footer-text');
+//$default->item('text#1')->setValue('footer-text#1');
+//
+////page-footer
+//$default = $page->item('default')->addPageFooter();
+//
+//$default->item('text')->setValue('page-footer-text');
+//$default->item('text#1')->setValue('page-footer-text#1');
 
 //row
 $rows = array(
