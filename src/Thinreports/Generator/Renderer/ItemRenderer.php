@@ -28,23 +28,18 @@ class ItemRenderer extends AbstractRenderer
 
         switch (true) {
             case $item instanceof Item\TextBlockItem:
-                print("text-block");
                 $this->renderTextBlockItem($item);
                 break;
             case $item instanceof Item\ImageBlockItem:
-                print("image-block");
                 $this->renderImageBlockItem($item);
                 break;
             case $item instanceof Item\PageNumberItem:
-                print("page-number");
                 $this->renderPageNumberItem($item);
                 break;
             case $item instanceof Item\ItemList\ListItem:
-                print("list");
                 $this->renderListItem($item);
                 break;
             default:
-                print("default");
                 $this->renderBasicItem($item);
                 break;
         }
@@ -63,20 +58,16 @@ class ItemRenderer extends AbstractRenderer
 
         switch (true) {
             case $item instanceof Item\TextBlockItem:
-                print("text-block");
                 return $item->hasReference() || $item->isPresent();
                 break;
             case $item instanceof Item\ImageBlockItem:
-                print("image-block");
                 return $item->isPresent();
                 break;
             case $item instanceof Item\PageNumberItem:
-                print("page-num");
                 $page = $item->getParent();
                 return $page->isCountable() && $item->isForReport();
                 break;
             default:
-                print("default");
                 return true;
                 break;
         }

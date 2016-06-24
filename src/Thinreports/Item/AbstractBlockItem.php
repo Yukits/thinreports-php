@@ -53,7 +53,13 @@ abstract class AbstractBlockItem extends AbstractItem
      */
     public function getBounds()
     {
-        return $this->format['box'];
+//        return $this->format['box'];
+        return array(
+            "x" => $this->format['x'],
+            "y" => $this->format['y'],
+            "width" => $this->format['width'],
+            "height" => $this->format['height']
+        );
     }
 
     /**

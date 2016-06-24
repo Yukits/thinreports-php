@@ -87,7 +87,7 @@ class Text
         $this->pdf->MultiCell(
             $width,                  // width
             $height,                 // height
-            $content[0],                // text
+            $content,                // text
             0,                       // border
             $styles['align'],        // align
             false,                   // fill
@@ -124,13 +124,12 @@ class Text
      */
     public function setFontStyles(array $style)
     {
-        echo "font1";
         $this->pdf->SetFont(
             $style['font_family'],
             $style['font_style'],
             $style['font_size']
         );
-        echo "font";
+
         $this->pdf->SetTextColorArray($style['color']);
     }
 
@@ -140,8 +139,6 @@ class Text
      */
     public function buildTextStyles(array $attrs)
     {
-        echo "asdf";
-        print_r($attrs);
         $font_style = array();
 
         foreach ($attrs['font_style'] ?: array() as $style) {
