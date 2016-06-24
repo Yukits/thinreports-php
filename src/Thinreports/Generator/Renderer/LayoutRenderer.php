@@ -106,9 +106,17 @@ class LayoutRenderer extends AbstractRenderer
             $styles['line_height'] = $attrs['style']['line-height-ratio'];
         }
 
+        $text = "";
+        foreach ($attrs['texts'] as $line) {
+            if($text == ""){
+                $text = $text . $line;
+            }else{
+                $text = $text . "\n" . $line;
+            }
+        }
 
         $this->doc->text->drawTextBox(
-            $attrs['texts'][0], //Why is it array of string?
+            $text,
             $attrs['x'],
             $attrs['y'],
             $attrs['width'],

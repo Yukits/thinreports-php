@@ -138,6 +138,7 @@ class TextBlockItem extends AbstractBlockItem
     public function hasReference()
     {
 //        return $this->format['ref-id'] !== '';
-        return $this->format['reference-id'] !== '';
+//        return $this->format['reference-id'] !== ' ';
+        return false;
     }
 }
