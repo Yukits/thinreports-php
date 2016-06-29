@@ -209,19 +209,10 @@ class ItemRenderer extends AbstractRenderer
 
     public function renderListItem(Item\ItemList\ListItem $item)
     {
-//        $bounds = $item->getBounds();
-//        $row_height =
-
-        //改ページの処理もどこかでやらねばならぬ
-        //はみだしてしまうときとかの処理も
-
-        //header,footer,page-footerの処理
-
         foreach ($item->getRows() as $row) {
           foreach ($row->getItems() as $ls_item) {
-            $this->render($ls_item); //これでうまくいくのか？リスト用の処理はいらないか？
+            $this->render($ls_item);
           }
-          //描画において行を増やす処理を行う(最後以外)
         }
     }
 
